@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.25rem;
+
+    /* PrimeXmc Minecraft Dark Theme */
+    --background: 0.12 0.008 260;
+    --foreground: 0.92 0.01 100;
+    --card: 0.16 0.01 260;
+    --card-foreground: 0.92 0.01 100;
+    --popover: 0.18 0.01 260;
+    --popover-foreground: 0.92 0.01 100;
+
+    /* Emerald green primary */
+    --primary: 0.62 0.2 152;
+    --primary-foreground: 0.08 0.005 260;
+
+    /* Stone secondary */
+    --secondary: 0.22 0.01 260;
+    --secondary-foreground: 0.85 0.01 100;
+
+    /* Muted stone */
+    --muted: 0.2 0.01 260;
+    --muted-foreground: 0.55 0.01 260;
+
+    /* Gold accent */
+    --accent: 0.78 0.16 80;
+    --accent-foreground: 0.08 0.005 260;
+
+    --destructive: 0.65 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+
+    --border: 0.28 0.015 260;
+    --input: 0.22 0.01 260;
+    --ring: 0.62 0.2 152;
+
+    --chart-1: 0.62 0.2 152;
+    --chart-2: 0.78 0.16 80;
+    --chart-3: 0.55 0.18 25;
+    --chart-4: 0.6 0.15 220;
+    --chart-5: 0.7 0.12 300;
+
+    --sidebar: 0.14 0.008 260;
+    --sidebar-foreground: 0.92 0.01 100;
+    --sidebar-primary: 0.62 0.2 152;
+    --sidebar-primary-foreground: 0.08 0.005 260;
+    --sidebar-accent: 0.22 0.01 260;
+    --sidebar-accent-foreground: 0.85 0.01 100;
+    --sidebar-border: 0.28 0.015 260;
+    --sidebar-ring: 0.62 0.2 152;
+
+    /* Custom Minecraft tokens */
+    --mc-green: 0.62 0.2 152;
+    --mc-green-bright: 0.72 0.22 152;
+    --mc-gold: 0.78 0.16 80;
+    --mc-gold-dark: 0.62 0.14 70;
+    --mc-stone: 0.32 0.01 260;
+    --mc-obsidian: 0.1 0.012 280;
+    --mc-dirt: 0.38 0.06 55;
+    --mc-diamond: 0.72 0.15 200;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Outfit', 'Cabinet Grotesk', 'Segoe UI', sans-serif;
+    image-rendering: pixelated;
+  }
+
+  /* Pixel grid background pattern */
+  .mc-bg {
+    background-color: oklch(var(--mc-obsidian));
+    background-image:
+      linear-gradient(oklch(var(--mc-stone) / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(var(--mc-stone) / 0.03) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  /* Minecraft-style inset card */
+  .mc-card {
+    background: oklch(var(--card));
+    border: 2px solid oklch(var(--mc-stone));
+    box-shadow:
+      inset 2px 2px 0 oklch(var(--mc-stone) / 0.4),
+      inset -2px -2px 0 oklch(0.08 0.005 260 / 0.6),
+      0 4px 20px oklch(0 0 0 / 0.5);
+  }
+
+  /* Minecraft-style button */
+  .mc-btn {
+    position: relative;
+    border: 2px solid transparent;
+    border-top-color: oklch(var(--mc-green-bright) / 0.6);
+    border-left-color: oklch(var(--mc-green-bright) / 0.4);
+    border-bottom-color: oklch(0.2 0.05 152);
+    border-right-color: oklch(0.2 0.05 152);
+    box-shadow: 0 4px 0 oklch(0.15 0.04 152), 0 6px 12px oklch(0 0 0 / 0.4);
+    transition: transform 0.1s, box-shadow 0.1s;
+  }
+
+  .mc-btn:hover {
+    background: oklch(var(--mc-green-bright));
+    box-shadow: 0 4px 0 oklch(0.2 0.05 152), 0 8px 20px oklch(var(--mc-green) / 0.3);
+    transform: translateY(-1px);
+  }
+
+  .mc-btn:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 oklch(0.2 0.05 152);
+  }
+
+  /* Gold button variant */
+  .mc-btn-gold {
+    border-top-color: oklch(var(--mc-gold) / 0.6);
+    border-left-color: oklch(var(--mc-gold) / 0.4);
+    border-bottom-color: oklch(var(--mc-gold-dark));
+    border-right-color: oklch(var(--mc-gold-dark));
+    box-shadow: 0 4px 0 oklch(var(--mc-gold-dark)), 0 6px 12px oklch(0 0 0 / 0.4);
+  }
+
+  .mc-btn-gold:hover {
+    background: oklch(0.82 0.18 80);
+    box-shadow: 0 4px 0 oklch(0.55 0.14 70), 0 8px 20px oklch(var(--mc-gold) / 0.3);
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: oklch(var(--mc-obsidian));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: oklch(var(--mc-stone));
+    border-radius: 0;
+  }
+
+  /* Pixel font for headings */
+  .mc-pixel {
+    font-family: 'Geist Mono', 'JetBrains Mono', 'Courier New', monospace;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+}
